@@ -30,7 +30,7 @@ export class LoginFormComponent {
 
 
   this.UserService.login(data).subscribe({
-    next: (res) => console.log(res),
+    next: (res:any) => this.UserService.setToken(res.token),
     error: (err) => console.log(err),
   })
   }

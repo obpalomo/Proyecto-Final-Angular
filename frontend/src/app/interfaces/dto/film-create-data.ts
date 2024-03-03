@@ -1,5 +1,4 @@
-export interface Film {
-    _id: string,
+export interface FilmCreateData {
     title: string,
     year: Number,
     director:string,
