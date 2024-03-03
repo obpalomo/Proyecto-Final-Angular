@@ -1,0 +1,7 @@
+<form [formGroup]="loginForm" (ngSubmit)="doLogin()">
+    <input formControlName="email" type="email" placeholder="email">
+    <input formControlName="password" [type]="hidePassword? 'password': 'text'" placeholder="password">
+    <button (click)="hidePassword=!hidePassword">Mostrar contraseña</button>
+    <br><br>
+    <button type="submit">Login</button>
+</form>
