@@ -1,1 +1,8 @@
-<p>films works!</p>
+<div class="container">
+  <h2>Movies</h2>
+  <ul class="list-group">
+    @for (film of films; track $index) {
+    <li class="list-group-item">{{ film.title }} - {{ film.year }}</li>
+    }
+  </ul>
+</div>

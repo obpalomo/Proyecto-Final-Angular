@@ -4,23 +4,27 @@ import { FilmCreateData } from '../interfaces/dto/film-create-data';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FilmService {
+  constructor(private http: HttpClient, private cookies: CookieService) {}
 
-  constructor(private http: HttpClient, private cookies: CookieService) { }
+  url: string = 'http://localhost:3000/api/films';
 
-  url: string = 'http://localhost:3000/api/films'
-
-  findAll(){
-    return this.http.get(`${this.url}?token=${this.cookies.get('token')}`)
+  findAll() {
+    return this.http.get(`${this.url}?token=${this.cookies.get('token')}`);
   }
 
-  insertOne(data: FilmCreateData){
-    return this.http.post(`${this.url}?token=${this.cookies.get('token')}`, data)
+  insertOne(data: FilmCreateData) {
+    return this.http.post(
+      `${this.url}?token=${this.cookies.get('token')}`,
+      data
+    );
   }
 
-  deleteOne(id: string){
-    return this.http.delete(`${this.url}/${id}?token=${this.cookies.get('token')}`)
+  deleteOne(id: string) {
+    return this.http.delete(
+      `${this.url}/${id}?token=${this.cookies.get('token')}`
+    );
   }
 }

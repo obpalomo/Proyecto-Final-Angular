@@ -3,11 +3,12 @@ import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FilmsComponent } from './pages/films/films.component';
+import { loginGuard } from './guards/login.guard';
 
 export const routes: Routes = [
     {
         path:"",
-        component: HomeComponent
+        component: HomeComponent,
     },
     {
         path:"login",
@@ -19,6 +20,11 @@ export const routes: Routes = [
     },
     {
         path:"films",
-        component: FilmsComponent
+        component: FilmsComponent,
+        children:[{
+            component: FilmsComponent,
+            path:":id"
+        }],
+        canActivate:[loginGuard]
     },
 ];

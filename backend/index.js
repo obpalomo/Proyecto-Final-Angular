@@ -12,7 +12,7 @@ app.use(cors())
 app.use(express.json())
 
 
-mongoose.connect("mongodb+srv://itsosmartinez:Bl3IzDUd3qMAmj67@cluster0.fabyljk.mongodb.net/peliculas")
+mongoose.connect("mongodb+srv://obpalomo:ZrbmRvNtjT51bdY6@cluster1.zlkhvg5.mongodb.net/Movies")
 .then(()=>{
     console.log(`Conexion con base de datos exitosa`)
 })
