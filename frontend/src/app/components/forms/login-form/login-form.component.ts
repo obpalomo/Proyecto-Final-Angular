@@ -1,39 +1,53 @@
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { UserService } from './../../../services/user.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UserLoginData } from '../../../interfaces/dto/user-login-data';
-
-
+import { UserService } from './../../../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule],
   templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.css'
+  styleUrls: ['./login-form.component.css'],
 })
-export class LoginFormComponent {
-  hidePassword: boolean = true
-  loginForm: FormGroup = this.formBuilder.group({
-    "email": new FormControl(null, [Validators.required, Validators.email]),
-    "password": new FormControl(null, [Validators.required])
-  })
+export class LoginFormComponent implements OnInit {
+  hidePassword = true;
+  loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private UserService: UserService){}
+  constructor(
+    private formBuilder: FormBuilder,
+    private userService: UserService,
+    private router: Router
+  ) {
+    this.loginForm = this.formBuilder.group({})
+  }
 
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      password: new FormControl(null, [Validators.required]),
+    });
+  }
 
-  doLogin(){
-    const data: UserLoginData = {
-      email: this.loginForm.get('email')?.value,
-      password: this.loginForm.get('password')?.value
+  doLogin() {
+    if (this.loginForm.invalid) {
+      return;
     }
 
+    const data: UserLoginData = {
+      email: this.loginForm.get('email')?.value,
+      password: this.loginForm.get('password')?.value,
+    };
 
-  this.UserService.login(data).subscribe({
-    next: (res:any) => this.UserService.setToken(res.token),
-    error: (err) => console.log(err),
-  })
+    this.userService.login(data).subscribe({
+      next: (res: any) => {
+        this.userService.setToken(res.token);
+        this.router.navigate(['/films']);
+      },
+      error: (err) => console.error('Login error:', err),
+    });
   }
 }

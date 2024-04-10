@@ -1,9 +1,10 @@
-import { Routes } from '@angular/router';
+import { Routes,RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { loginGuard } from './guards/login.guard';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     {
@@ -28,3 +29,4 @@ export const routes: Routes = [
         canActivate:[loginGuard]
     },
 ];
+

@@ -17,3 +17,10 @@
     font-size: 2rem;
     margin-bottom: 20px;
   }
+
+.form-control {
+  margin-top: 10px;
+}
+.password{
+  margin-top: 10px;
+}
