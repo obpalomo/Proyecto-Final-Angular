@@ -4,5 +4,6 @@ export interface Film {
     year: Number,
     director:string,
     category:string,
-    synopsis:string
+    synopsis:string,
+    image:string
 }

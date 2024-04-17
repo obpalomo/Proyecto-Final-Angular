@@ -3,5 +3,6 @@ export interface FilmCreateData {
     year: Number,
     director:string,
     category:string,
-    synopsis:string
+    synopsis:string,
+    image:string
 }

@@ -5,6 +5,8 @@ import { RegisterComponent } from './pages/register/register.component';
 import { FilmsComponent } from './pages/films/films.component';
 import { loginGuard } from './guards/login.guard';
 import { NgModule } from '@angular/core';
+import { AdminComponent } from './pages/admin/admin.component';
+import { adminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     {
@@ -28,5 +30,10 @@ export const routes: Routes = [
         }],
         canActivate:[loginGuard]
     },
+    {
+        path:"admin",
+        component: AdminComponent,
+        canActivate:[adminGuard]
+    }
 ];
 

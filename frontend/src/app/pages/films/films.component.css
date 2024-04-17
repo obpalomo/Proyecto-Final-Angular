@@ -1,0 +1,29 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.list-group {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.list-group-item {
+  margin: 10px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.movie-image {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}

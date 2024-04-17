@@ -2,7 +2,29 @@
   <h2>Movies</h2>
   <ul class="list-group">
     @for (film of films; track $index) {
-    <li class="list-group-item">{{ film.title }} - {{ film.year }}</li>
+    <li class="list-group-item">
+      <img src="{{ film.image }}" alt="{{ film.title }}" class="movie-image" />
+      <span>{{ film.title }}</span>
+      <button
+        [ngClass]="{
+          'btn-primary': !selectedFilm?.title,
+          'btn-secondary': !!selectedFilm?.title
+        }"
+        class="btn btn-sm float-right"
+        (click)="showDetails(film)"
+      >
+        {{
+          selectedFilm?.title === film.title
+            ? "Ocultar detalles"
+            : "Más detalles"
+        }}
+      </button>
+      <div *ngIf="selectedFilm?.title === film.title" class="movie-details">
+        <h3>Año: {{ film.year }}</h3>
+        <h3>Director: {{ film.director }}</h3>
+        <p>Sinopsis: {{ film.synopsis }}</p>
+      </div>
+    </li>
     }
   </ul>
 </div>

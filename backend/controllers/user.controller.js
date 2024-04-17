@@ -17,7 +17,7 @@ async function login(req,res){
             }
             else{
                 const token = jwt.sign({userId: foundUser._id}, "DXdd21@ace4",{expiresIn: '1h'})
-                return res.status(200).json({msg: "ok", token: token})
+                return res.status(200).json({msg: "ok", token: token, role:foundUser.role})
             }
         }
     } catch (error) {
