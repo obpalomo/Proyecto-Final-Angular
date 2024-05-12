@@ -1,5 +1,5 @@
 .container {
-  max-width: 800px;
+  max-width: 100%;
   margin: 0 auto;
   padding: 20px;
 }
@@ -9,21 +9,50 @@
   padding: 0;
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .list-group-item {
   margin: 10px;
   text-align: center;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
   flex-wrap: wrap;
   align-content: center;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-color: rgb(225 215 230 / 32%);
 }
 
 .movie-image {
-  width: 100px;
-  height: auto;
-  border-radius: 5px;
+  width: 250px;
+  height: 370px;
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
+.btn-bin {
+  height: 50px;
+  font-size: 30px;
+  width: 50px;
+  border: none;
+  margin-top: 5px;
+}
+
+.title-movies{
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 10px;
+}
+
+.film-title{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.btn_details{
   margin-bottom: 10px;
 }

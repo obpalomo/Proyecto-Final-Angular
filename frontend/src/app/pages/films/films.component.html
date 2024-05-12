@@ -1,28 +1,31 @@
 <div class="container">
-  <h2>Movies</h2>
+  <h2 class="title-movies">Movies</h2>
   <ul class="list-group">
     @for (film of films; track $index) {
     <li class="list-group-item">
       <img src="{{ film.image }}" alt="{{ film.title }}" class="movie-image" />
-      <span>{{ film.title }}</span>
+      <span class="film-title">{{ film.title }}</span>
       <button
         [ngClass]="{
           'btn-primary': !selectedFilm?.title,
           'btn-secondary': !!selectedFilm?.title
         }"
-        class="btn btn-sm float-right"
+        class="btn btn-sm float-right btn_details"
         (click)="showDetails(film)"
       >
         {{
           selectedFilm?.title === film.title
-            ? "Ocultar detalles"
-            : "Más detalles"
+            ? "Hidden details"
+            : "Show more details"
         }}
       </button>
+      <button class="btn-bin" (click)="deleteMovie(film)">
+        🗑️
+      </button>
       <div *ngIf="selectedFilm?.title === film.title" class="movie-details">
-        <h3>Año: {{ film.year }}</h3>
+        <h3>Year: {{ film.year }}</h3>
         <h3>Director: {{ film.director }}</h3>
-        <p>Sinopsis: {{ film.synopsis }}</p>
+        <p>Synopsis: {{ film.synopsis }}</p>
       </div>
     </li>
     }
