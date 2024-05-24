@@ -15,7 +15,7 @@ export class FilmService {
     return this.http.get(`${this.url}?token=${this.cookies.get('token')}`);
   }
 
-  insertOne(data: FilmCreateData) {
+  insert(data: FilmCreateData) {
     return this.http.post(
       `${this.url}?token=${this.cookies.get('token')}`,
       data
