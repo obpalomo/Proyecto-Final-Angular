@@ -49,5 +49,9 @@ export class FilmsComponent implements OnInit {
         });
     }
   }
+
+  trackByFn(index: number, film: Film): string {
+    return film._id;
+  }
 }
 
