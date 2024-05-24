@@ -45,7 +45,10 @@ export class AdminComponent {
     };
     this.filmService.insert(createFilm)
     .subscribe({
-      next: (res:any) => alert('Película añadida correctamente'),
+      next: (res:any) => {
+        alert('Película añadida correctamente'),
+        this.newFilm.reset();
+    },
       error: (err) => console.log('Error al añadir la película', err)
       
     })

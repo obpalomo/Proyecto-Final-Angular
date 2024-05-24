@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Film } from '../../interfaces/film';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-films',
   standalone: true,
